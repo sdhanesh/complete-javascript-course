@@ -7,10 +7,15 @@ const flights =
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  loca: 'Via Angelo Tavanti 23, Firenze, Italy',
+  country: 'Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  show: function (f, s) {
+    return [this.categories[f], this.mainMenu[s]];
+  },
 
   openingHours: {
     thu: {
@@ -27,3 +32,80 @@ const restaurant = {
     },
   },
 };
+
+const response = [
+  1,
+  2,
+  3,
+  { cif: '123' },
+  { obj1: { aNme: 'a', bName: 'b' } },
+  { obj2: 'dhanesh' },
+  1,
+  3,
+];
+
+let [, , , demo] = response;
+console.log(demo);
+
+console.log(response.obj1);
+
+let { mainMenu } = restaurant;
+console.log(mainMenu);
+
+//const [a, , b] = restaurant.categories;
+//console.log(a, b);
+
+const [x, y] = restaurant.show(1, 2);
+console.log(x, y);
+
+let [a, b, c] = 'ABC';
+console.log(a, '=a', b, '=b');
+
+const { name, openingHours, categories, country, loca } = restaurant;
+console.log(
+  'name=',
+  name,
+  'ophr=',
+  openingHours,
+  'cat=',
+  categories,
+  'con=',
+  country
+);
+
+const user = {
+  name: 'Alex',
+  address: {
+    area: '15th Park Avenue',
+    street: 'lane1',
+    city: 'avenu',
+  },
+  age: 43,
+};
+
+const { address: permanentAddress } = user;
+
+console.log(permanentAddress);
+
+const getValue = v => {
+  const { [v]: value } = user;
+  return value;
+};
+
+console.log(getValue('age'));
+
+console.log('-----or----');
+
+let ex = 0 || 'dhanesh';
+console.log(ex);
+
+console.log(0 || '' || 10 || 'dhanu');
+
+let arrLang = ['java', 'c', 'python', 'javaScript', { mng: 10, nyt: 20 }];
+
+for (let v of arrLang.entries()) {
+  console.log(v);
+}
+
+const [, , , , objVal] = arrLang;
+console.log(objVal);
